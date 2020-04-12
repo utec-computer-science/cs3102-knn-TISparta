@@ -9,6 +9,7 @@ class Point {
 public:
   Point () {}
   Point (T x, T y): x(x), y(y) {}
+  ~Point () {}
   T get_x () const { return x; }
   T get_y () const { return y; }
 
