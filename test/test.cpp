@@ -5,8 +5,7 @@
 
 #include "../src/util/util.hpp"
 
-typedef int value_t;
-
+using value_t = int;
 const value_t MIN_VAL = -100;
 const value_t MAX_VAL = +100;
 
@@ -38,7 +37,6 @@ TEST(util, knn_test_1) {
   points[3] = Point <value_t> (3, 3);
   points[4] = Point <value_t> (4, 4);
   const int k = 3;
-  std::cout << typeid(k).name() << std::endl;
   Point <value_t> center(2, 2);
   std::vector <Point <value_t>> knn = util::knn(k, points, center, getter);
   for (auto p: knn) {
