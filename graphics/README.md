@@ -1,7 +1,7 @@
 ### Graphics
 
 `take-times.cpp` takes time of different executions of KNN and save the results
-in `data.in` and `generate-graphics.py` created a graphic with the data of
+in `data.in` and `generate-graphics.py` creates a graphic with the data in
 `data.in`
 
 ### Configuration
