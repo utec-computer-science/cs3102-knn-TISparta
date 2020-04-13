@@ -33,16 +33,18 @@ int main () {
   // reading
   std::ofstream file;
   file.open(FILE_NAME, std::ios::out | std::ios::trunc);
-  const int N = 1e2;
-  const int STEP = 10;
+  const int N = 1e6;
   const int ITERATIONS = 5;
-  for (int n = STEP; n <= N; n += STEP) {
+  int n = 1;
+  while (n <= N) {
     file << n;
     for (int it = 0; it < ITERATIONS; it++) {
       file << ' ' << simulate(n);
     }
     file << '\n';
     file.flush();
+    int log = std::log10(n);
+    n += pow(10, log);
   }
   file.close();
   return (0);
