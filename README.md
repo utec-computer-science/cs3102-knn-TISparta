@@ -11,3 +11,5 @@ cd test/
 make
 ./test
 ```
+
+![](graphics/graphic.png)
