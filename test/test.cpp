@@ -1,4 +1,5 @@
 #include <iostream>
+#include <utility>
 
 #include <gtest/gtest.h>
 
@@ -8,6 +9,10 @@ typedef int value_t;
 
 const value_t MIN_VAL = -100;
 const value_t MAX_VAL = +100;
+
+auto getter = [&] (Point <value_t> point) -> std::pair <value_t, value_t> {
+  return {point.get_x(), point.get_y()};
+};
 
 TEST(util, random_points_generation) {
   const int n = 10;
@@ -33,8 +38,9 @@ TEST(util, knn_test_1) {
   points[3] = Point <value_t> (3, 3);
   points[4] = Point <value_t> (4, 4);
   const int k = 3;
+  std::cout << typeid(k).name() << std::endl;
   Point <value_t> center(2, 2);
-  std::vector <Point <value_t>> knn = util::knn(k, points, center);
+  std::vector <Point <value_t>> knn = util::knn(k, points, center, getter);
   for (auto p: knn) {
     std::cout << p;
   }
@@ -50,7 +56,7 @@ TEST(util, knn_test_2) {
   points[4] = Point <value_t> (4, 4);
   const int k = 3;
   Point <value_t> center(5, 5);
-  std::vector <Point <value_t>> knn = util::knn(k, points, center);
+  std::vector <Point <value_t>> knn = util::knn(k, points, center, getter);
   for (auto p: knn) {
     std::cout << p;
   }
